@@ -15,7 +15,7 @@ class AppointmentController extends Controller
     //
      public function showall()
     {
-        $users = User::all();
+        $users = appointments::all();
         if ($users == "") {
             return response()->json([
                 'success' => true,

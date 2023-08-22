@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\AppointmentController;
+
 
 
 /*
@@ -35,6 +37,18 @@ Route::get('allpricingcut/{id}', [RefererController::class, 'allPricing_after_Cu
 
 Route::get('clients/showclients', [PassportController::class, 'showallclients']);
 Route::get('clients/singleclients/{id}', [PassportController::class, 'show']);
+
+
+//////////Appointments API's ////////////////
+Route::get('allappointments', [AppointmentController::class, 'showall']);
+Route::post('addappointments', [AppointmentController::class, 'addappointment']);
+// Route::post('updateappointments/{id}', [AppointmentController::class, 'update_pricing']);
+Route::post('deleteappointments/{id}', [AppointmentController::class, 'destroy_appointments']);
+Route::get('singleappointments/{id}', [AppointmentController::class, 'show_single_appointment']);
+Route::post('acceptappointment/{id}', [AppointmentController::class, 'AppointmentAccept']);
+Route::post('rejectappointment/{id}', [AppointmentController::class, 'AppointmentRejected']);
+Route::get('singleappointmentsbycust/{id}', [AppointmentController::class, 'show_all_appointment_by_custid']);
+
 
 
 
