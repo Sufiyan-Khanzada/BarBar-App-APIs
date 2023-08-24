@@ -47,6 +47,8 @@ class AppointmentController extends Controller
             'email' => 'required|string',
             'address' => 'required|string',
             'gender' => 'required|string',
+            'package_id' => 'nullable|string',
+            
             
             
         ]);
@@ -70,6 +72,7 @@ class AppointmentController extends Controller
         $pricing->email = $request->email;
         $pricing->address = $request->address;
         $pricing->gender = $request->gender;
+         $pricing->package_id = $request->package_id;
         
 
         $pricing->save();
@@ -123,6 +126,47 @@ class AppointmentController extends Controller
             'data' => $pricing
         ], 200);
     }
+
+
+
+          public function all_accepted_appointment($id)
+    {
+        $pricing = appointments::where('descsion', 'Accepted')->get();
+
+        if ($pricing->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Appointment Details Not Found'
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Appointment Details Found',
+            'data' => $pricing
+        ], 200);
+    }
+
+
+     public function all_rejected_appointment($id)
+    {
+        $pricing = appointments::where('descsion', 'Rejected')->get();
+
+        if ($pricing->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Appointment Details Not Found'
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Appointment Details Found',
+            'data' => $pricing
+        ], 200);
+    }
+
+
 
          public function destroy_appointments($id)
     {

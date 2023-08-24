@@ -21,6 +21,7 @@ class appointments extends Model
         'email',
         'address',
         'gender',
+        'package_id',
         
 
         

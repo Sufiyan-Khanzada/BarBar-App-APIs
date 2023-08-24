@@ -41,7 +41,7 @@ Route::get('clients/singleclients/{id}', [PassportController::class, 'show']);
 
 //////////Appointments API's ////////////////
 Route::get('allappointments', [AppointmentController::class, 'showall']);
-Route::post('addappointments', [AppointmentController::class, 'addappointment']);
+Route::post('addappointment', [AppointmentController::class, 'addappointment']);
 // Route::post('updateappointments/{id}', [AppointmentController::class, 'update_pricing']);
 Route::post('deleteappointments/{id}', [AppointmentController::class, 'destroy_appointments']);
 Route::get('singleappointments/{id}', [AppointmentController::class, 'show_single_appointment']);
@@ -49,11 +49,8 @@ Route::post('acceptappointment/{id}', [AppointmentController::class, 'Appointmen
 Route::post('rejectappointment/{id}', [AppointmentController::class, 'AppointmentRejected']);
 Route::get('singleappointmentsbycust/{id}', [AppointmentController::class, 'show_all_appointment_by_custid']);
 
-
-
-
-
-
+Route::get('all_accepted', [AppointmentController::class, 'all_accepted_appointment']);
+Route::get('all_rejected', [AppointmentController::class, 'all_rejected_appointment']);
 
 
 Route::middleware('auth:api')->group(function () {
